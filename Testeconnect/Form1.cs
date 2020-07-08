@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using Modbus.Device;
 
+
 namespace Testeconnect
 {
     public partial class Form1 : Form
@@ -18,88 +19,180 @@ namespace Testeconnect
 
         bool funct = false;
         bool funct1 = false;
+        uint fun1 = 0;
+        float time_s = 0;
+        float time_m = 0;
+        float time_h = 0;
+
+        float t1 = 0;
+        float t2 = 0;
+        float t3 = 0;
+        float t4 = 0;
+        float ttotal = 0;
+        int temp_h = 0;
+        int temp_l = 0;
+
 
 
         public Form1()
         {
             InitializeComponent();
-
-            
+                        
         }
 
-        private void btn1_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-                 // configure serial port
-                //port.BaudRate = 9600;
-                // port.DataBits = 8;
-                //port.Parity = Parity.Even;
-                //port.StopBits = StopBits.One;
-                //port.Open();
-
-                // create modbus master
-                //IModbusSerialMaster master = ModbusSerialMaster.CreateRtu(port);
-
-               // byte slaveId = 1;
-               // ushort startAddress = 10;
-                //ushort[] registers = new ushort[] { 1, 2, 3 };
-                // ushort[] registers = new ushort[] { 01, 05, 15 };
-                // write three registers
-                //  master.WriteMultipleRegisters(slaveId, startAddress, registers);
-                //ushort[] holding_register = master.ReadHoldingRegisters(slaveId, startAddress, 3);
-
-               // leitura.Text = Convert.ToString(holding_register[0]);
-               // leitura2.Text = Convert.ToString(holding_register[1]);
-               // leitura3.Text = Convert.ToString(holding_register[2]);
-
-                //ushort[] registers = new ushort[] { 10, 20, 30 };
-
-                // write three registers
-                //master.WriteMultipleRegisters(slaveId, startAddress, registers);
-
-                // write single register
-                //master.WriteSingleRegister(slaveId, startAddress, ushort.Parse(txt1.Text));
-
-                //ushort[] write_register = master.WriteSingleRegister(slaveId, startAddress, 1);
-
-                 
+            btn_sol.BackColor = Color.LightSalmon;
+            btn_for.BackColor = Color.LightSalmon;
         }
-
-        private void leitura_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txt1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+                       
         private void timer1_Tick(object sender, EventArgs e)
         {
-               
-                IModbusSerialMaster master = ModbusSerialMaster.CreateRtu(ports);
+            IModbusSerialMaster master = ModbusSerialMaster.CreateRtu(ports);
+            byte slaveId = Convert.ToByte(txtslave.Text);
+            ushort startAddress = Convert.ToUInt16(txtaddress.Text);
 
-                byte slaveId = Convert.ToByte(txtslave.Text);
-                ushort startAddress = Convert.ToUInt16(txtaddress.Text);
+            master.WriteSingleRegister(slaveId, 47, Convert.ToUInt16(fun1));
 
-                ushort[] holding_register = master.ReadHoldingRegisters(slaveId, startAddress, 2);
+            if (time_s < t1)
+            {
+                master.WriteSingleCoil(slaveId, 2, false);
+                btn_sol.Text = "DESLIGADO";
 
-                leitura.Text = Convert.ToString(Convert.ToDouble((holding_register[1])/10));
-                leitura2.Text = Convert.ToString(holding_register[0]);
+                master.WriteSingleCoil(slaveId, 4, false);
+                btn_for.Text = "DESLIGADO";
 
-            // write single register
+                master.WriteSingleRegister(slaveId, 25, Convert.ToUInt16(temp_h*10));
 
-            master.WriteSingleCoil(slaveId, 2, funct);
+                
+            }
 
+            if (time_s >= t1 && time_s < t2)
+            {
+
+                master.WriteSingleCoil(slaveId, 4, true);
+                btn_for.Text = "LIGADO";
+                btn_for.BackColor = Color.LightGreen;
+            }
+
+            if (time_s >= t2 && time_s < t3)
+            {
+                master.WriteSingleCoil(slaveId, 2, true);
+                btn_sol.Text = "LIGADO";
+                btn_sol.BackColor = Color.LightGreen;
+                master.WriteSingleRegister(slaveId, 25, Convert.ToUInt16(temp_l*10));
+
+                master.WriteSingleCoil(slaveId, 4, false);
+                btn_for.Text = "DESLIGADO";
+                btn_for.BackColor = Color.LightSalmon;
+            }
+
+            if (time_s >= t3 && time_s < t4)
+            {
+                master.WriteSingleCoil(slaveId, 2, false);
+                btn_sol.Text = "DESLIGADO";
+                btn_sol.BackColor = Color.LightSalmon;
+
+                master.WriteSingleCoil(slaveId, 4, true);
+                btn_for.Text = "LIGADO";
+                btn_for.BackColor = Color.LightGreen;
+            }
+
+            if (time_s >= t4)
+            {
+                master.WriteSingleCoil(slaveId, 2, false);
+                btn_sol.Text = "DESLIGADO";
+                btn_sol.BackColor = Color.LightSalmon;
+
+                master.WriteSingleCoil(slaveId, 4, false);
+                btn_for.Text = "DESLIGADO";
+                btn_for.BackColor = Color.LightSalmon;
+            }
+
+                // Crônometro--------------------------------------------------------------------------------------------------
+
+
+                if (time_s <= 59)
+            {
+                if (time_s < 10)
+                {
+                    txt_time.Text = Convert.ToString(time_h) + "0:0" + Convert.ToString(time_m) + ":0" + Convert.ToString(time_s);
+                }
+                else
+                {
+                    txt_time.Text = Convert.ToString(time_h) + "0:0" + Convert.ToString(time_m) + ":" + Convert.ToString(time_s);
+                }
+                
+            }
+
+            else if (time_m <= 59)
+            {
+                time_m++;
+                time_s = 0;
+                if (time_m < 10)
+                {
+                    txt_time.Text = Convert.ToString(time_h) + "0:0" + Convert.ToString(time_m) + ":0" + Convert.ToString(time_s);
+                }
+                else
+                {
+                    txt_time.Text = Convert.ToString(time_h) + "0:" + Convert.ToString(time_m) + ":" + Convert.ToString(time_s);
+                }
+            }
+            else if (time_h < 999)
+            {
+                time_h++;
+                time_s = 0;
+                time_m = 0;
+                if (time_h < 10)
+                {
+                    txt_time.Text = "0" + Convert.ToString(time_h) + ":0" + Convert.ToString(time_m) + ":0" + Convert.ToString(time_s);
+                }
+                else
+                {
+                    txt_time.Text = Convert.ToString(time_h) + ":" + Convert.ToString(time_m) + ":" + Convert.ToString(time_s);
+                }
+            }
+            time_s++;
+
+
+            //-------------------------------------------------------------------------------------------------------------
+
+            //Escrita/Leitura dos Registradores
+
+
+
+            ushort[] holding_register = master.ReadHoldingRegisters(slaveId, startAddress, 2);
+
+            float valor = Convert.ToSingle(holding_register[0]);
+            float valor1 = Convert.ToSingle(holding_register[1]);
+
+            leitura.Text = Convert.ToString(valor1/10);
+            leitura2.Text = Convert.ToString(valor/10);
+
+                     
             
-            master.WriteSingleRegister(slaveId, 47, Convert.ToUInt16(funct1));
-            master.WriteSingleCoil(slaveId, 4, funct1);
+            // write single Coil
+
+            //master.WriteSingleCoil(slaveId, 4, funct1);
+
+            // write single Register
+
+
+            //-------------------------------------------------------------------------------------------------------------
+
+
+            //else
+            //{
+            // master.WriteSingleCoil(slaveId, 2, funct);
+            //}
+
 
 
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+                   
+      {
             try
             {
                 if (ports.IsOpen)
@@ -108,6 +201,19 @@ namespace Testeconnect
                     ports.Close();
                     button1.Text = "Desconnected";
                     button1.BackColor = Color.Red;
+
+                                       
+
+                    time_h = 0;
+                    time_s = 0;
+                    time_m = 0;
+
+                    txt_time.Text = Convert.ToString(time_h) + ":" + Convert.ToString(time_m) + ":" + Convert.ToString(time_s);
+
+                    fun1 = 0;
+                   
+
+
                 }
                 else
                 {
@@ -115,7 +221,10 @@ namespace Testeconnect
                     ports.Open();
                     button1.Text = "Connected";
                     button1.BackColor = Color.Green;
-                }
+
+                    fun1 = 1;
+                    
+                                    }
             }
             catch(Exception err)
             {
@@ -148,6 +257,16 @@ namespace Testeconnect
         {
             Form3 form3 = new Form3();
             form3.ShowDialog();
+
+            t1 = Convert.ToInt16(form3.txt_t1.Text);
+            t2 = Convert.ToInt16(form3.txt_t2.Text);
+            t3 = Convert.ToInt16(form3.txt_t3.Text);
+            t4 = Convert.ToInt16(form3.txt_t4.Text);
+            ttotal = Convert.ToInt16(form3.txt_total.Text);
+            temp_h = Convert.ToInt16(form3.txt_temph.Text);
+            temp_l = Convert.ToInt16(form3.txt_templ.Text);
+
+
         }
 
         private void btn_sol_Click(object sender, EventArgs e)
@@ -181,5 +300,7 @@ namespace Testeconnect
                 btn_for.BackColor = Color.LightCoral;
             }
         }
+
+       
     }
 }

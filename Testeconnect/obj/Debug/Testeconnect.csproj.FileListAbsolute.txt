@@ -13,3 +13,17 @@ C:\Users\Renan\Desktop\Microgenios\C#\Teste2\Testeconnect\Testeconnect\obj\Debug
 C:\Users\Renan\Desktop\Microgenios\C#\Teste2\Testeconnect\Testeconnect\obj\Debug\Testeconnect.pdb
 C:\Users\Renan\Desktop\Microgenios\C#\Teste2\Testeconnect\Testeconnect\obj\Debug\Testeconnect.Form2.resources
 C:\Users\Renan\Desktop\Microgenios\C#\Teste2\Testeconnect\Testeconnect\obj\Debug\Testeconnect.Form3.resources
+C:\Users\Renan\Desktop\Microgenios\C#\Teste2\Testeconnect\Forno\Testeconnect\bin\Debug\Testeconnect.exe.config
+C:\Users\Renan\Desktop\Microgenios\C#\Teste2\Testeconnect\Forno\Testeconnect\bin\Debug\Testeconnect.exe
+C:\Users\Renan\Desktop\Microgenios\C#\Teste2\Testeconnect\Forno\Testeconnect\bin\Debug\Testeconnect.pdb
+C:\Users\Renan\Desktop\Microgenios\C#\Teste2\Testeconnect\Forno\Testeconnect\bin\Debug\log4net.dll
+C:\Users\Renan\Desktop\Microgenios\C#\Teste2\Testeconnect\Forno\Testeconnect\obj\Debug\Testeconnect.csprojAssemblyReference.cache
+C:\Users\Renan\Desktop\Microgenios\C#\Teste2\Testeconnect\Forno\Testeconnect\obj\Debug\Testeconnect.Form1.resources
+C:\Users\Renan\Desktop\Microgenios\C#\Teste2\Testeconnect\Forno\Testeconnect\obj\Debug\Testeconnect.Form2.resources
+C:\Users\Renan\Desktop\Microgenios\C#\Teste2\Testeconnect\Forno\Testeconnect\obj\Debug\Testeconnect.Form3.resources
+C:\Users\Renan\Desktop\Microgenios\C#\Teste2\Testeconnect\Forno\Testeconnect\obj\Debug\Testeconnect.Properties.Resources.resources
+C:\Users\Renan\Desktop\Microgenios\C#\Teste2\Testeconnect\Forno\Testeconnect\obj\Debug\Testeconnect.csproj.GenerateResource.cache
+C:\Users\Renan\Desktop\Microgenios\C#\Teste2\Testeconnect\Forno\Testeconnect\obj\Debug\Testeconnect.csproj.CoreCompileInputs.cache
+C:\Users\Renan\Desktop\Microgenios\C#\Teste2\Testeconnect\Forno\Testeconnect\obj\Debug\Testeconnect.csproj.CopyComplete
+C:\Users\Renan\Desktop\Microgenios\C#\Teste2\Testeconnect\Forno\Testeconnect\obj\Debug\Testeconnect.exe
+C:\Users\Renan\Desktop\Microgenios\C#\Teste2\Testeconnect\Forno\Testeconnect\obj\Debug\Testeconnect.pdb

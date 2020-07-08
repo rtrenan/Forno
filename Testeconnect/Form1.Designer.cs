@@ -38,6 +38,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.comunicaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comunicaçãoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.rampaTemperaturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.endereçosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtslave = new System.Windows.Forms.TextBox();
@@ -45,12 +46,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.rampaTemperaturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btn_sol = new System.Windows.Forms.Button();
             this.btn_for = new System.Windows.Forms.Button();
+            this.txt_time = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -66,7 +68,6 @@
             this.leitura.Size = new System.Drawing.Size(126, 23);
             this.leitura.TabIndex = 0;
             this.leitura.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.leitura.Click += new System.EventHandler(this.leitura_Click);
             // 
             // leitura2
             // 
@@ -141,6 +142,13 @@
             this.comunicaçãoToolStripMenuItem1.Text = "Comunicação";
             this.comunicaçãoToolStripMenuItem1.Click += new System.EventHandler(this.comunicaçãoToolStripMenuItem1_Click);
             // 
+            // rampaTemperaturaToolStripMenuItem
+            // 
+            this.rampaTemperaturaToolStripMenuItem.Name = "rampaTemperaturaToolStripMenuItem";
+            this.rampaTemperaturaToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.rampaTemperaturaToolStripMenuItem.Text = "Rampa - Temperatura";
+            this.rampaTemperaturaToolStripMenuItem.Click += new System.EventHandler(this.rampaTemperaturaToolStripMenuItem_Click);
+            // 
             // ajudaToolStripMenuItem
             // 
             this.ajudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -199,17 +207,10 @@
             this.label3.TabIndex = 17;
             this.label3.Text = "Solenóide";
             // 
-            // rampaTemperaturaToolStripMenuItem
-            // 
-            this.rampaTemperaturaToolStripMenuItem.Name = "rampaTemperaturaToolStripMenuItem";
-            this.rampaTemperaturaToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.rampaTemperaturaToolStripMenuItem.Text = "Rampa - Temperatura";
-            this.rampaTemperaturaToolStripMenuItem.Click += new System.EventHandler(this.rampaTemperaturaToolStripMenuItem_Click);
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Testeconnect.Properties.Resources._9064;
-            this.pictureBox2.Location = new System.Drawing.Point(191, 135);
+            this.pictureBox2.Location = new System.Drawing.Point(189, 125);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(225, 190);
             this.pictureBox2.TabIndex = 11;
@@ -220,7 +221,7 @@
             this.pictureBox1.Image = global::Testeconnect.Properties.Resources.imagemT2;
             this.pictureBox1.Location = new System.Drawing.Point(12, 36);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 67);
+            this.pictureBox1.Size = new System.Drawing.Size(200, 63);
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
@@ -258,6 +259,22 @@
             this.btn_for.UseVisualStyleBackColor = false;
             this.btn_for.Click += new System.EventHandler(this.btn_for_Click);
             // 
+            // txt_time
+            // 
+            this.txt_time.Location = new System.Drawing.Point(294, 321);
+            this.txt_time.Name = "txt_time";
+            this.txt_time.Size = new System.Drawing.Size(86, 20);
+            this.txt_time.TabIndex = 21;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(195, 324);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(85, 13);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Tempo do Teste";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -265,6 +282,8 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ClientSize = new System.Drawing.Size(452, 353);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txt_time);
             this.Controls.Add(this.btn_for);
             this.Controls.Add(this.btn_sol);
             this.Controls.Add(this.label4);
@@ -285,6 +304,7 @@
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Config - Estresse Térmico";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -318,6 +338,8 @@
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.Button btn_sol;
         public System.Windows.Forms.Button btn_for;
+        private System.Windows.Forms.TextBox txt_time;
+        private System.Windows.Forms.Label label5;
     }
 }
 
