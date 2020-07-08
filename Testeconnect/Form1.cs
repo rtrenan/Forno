@@ -85,7 +85,7 @@ namespace Testeconnect
                 ushort[] holding_register = master.ReadHoldingRegisters(slaveId, startAddress, 2);
 
                 leitura.Text = Convert.ToString(Convert.ToDouble((holding_register[1])/10));
-                leitura2.Text = Convert.ToString(holding_register[0]/10);
+                leitura2.Text = Convert.ToString(holding_register[0]);
 
             // write single register
 
