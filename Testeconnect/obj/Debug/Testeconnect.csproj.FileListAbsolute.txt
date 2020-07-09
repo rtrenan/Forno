@@ -27,3 +27,4 @@ C:\Users\Renan\Desktop\Microgenios\C#\Teste2\Testeconnect\Forno\Testeconnect\obj
 C:\Users\Renan\Desktop\Microgenios\C#\Teste2\Testeconnect\Forno\Testeconnect\obj\Debug\Testeconnect.csproj.CopyComplete
 C:\Users\Renan\Desktop\Microgenios\C#\Teste2\Testeconnect\Forno\Testeconnect\obj\Debug\Testeconnect.exe
 C:\Users\Renan\Desktop\Microgenios\C#\Teste2\Testeconnect\Forno\Testeconnect\obj\Debug\Testeconnect.pdb
+C:\Users\Renan\Desktop\Microgenios\C#\Teste2\Testeconnect\Forno\Testeconnect\obj\Debug\Testeconnect.Form4.resources

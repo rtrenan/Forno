@@ -17,9 +17,12 @@ namespace Testeconnect
     {
         SerialPort ports = new SerialPort();
 
-        bool funct = false;
-        bool funct1 = false;
+        int funct = 0;
+        int funct1 = 0;
         uint fun1 = 0;
+
+        int start = 0;
+
         float time_s = 0;
         float time_m = 0;
         float time_h = 0;
@@ -31,6 +34,25 @@ namespace Testeconnect
         float ttotal = 0;
         int temp_h = 0;
         int temp_l = 0;
+        double contador = 0;
+
+        int tempo1 = 0;
+        int tempo2 = 0;
+        int tempo3 = 0;
+        int tempo1v = 0;
+        int tempo2v = 0;
+        int tempo3v = 0;
+
+        int set1 = 0;
+        int set2 = 0;
+        int set3 = 0;
+        int set1v = 0;
+        int set2v = 0;
+        int set3v = 0;
+
+        int box1 = 0;
+        int box2 = 0;
+        int box3 = 0;
 
 
 
@@ -48,71 +70,11 @@ namespace Testeconnect
                        
         private void timer1_Tick(object sender, EventArgs e)
         {
-            IModbusSerialMaster master = ModbusSerialMaster.CreateRtu(ports);
-            byte slaveId = Convert.ToByte(txtslave.Text);
-            ushort startAddress = Convert.ToUInt16(txtaddress.Text);
-
-            master.WriteSingleRegister(slaveId, 47, Convert.ToUInt16(fun1));
-
-            if (time_s < t1)
-            {
-                master.WriteSingleCoil(slaveId, 2, false);
-                btn_sol.Text = "DESLIGADO";
-
-                master.WriteSingleCoil(slaveId, 4, false);
-                btn_for.Text = "DESLIGADO";
-
-                master.WriteSingleRegister(slaveId, 25, Convert.ToUInt16(temp_h*10));
-
-                
-            }
-
-            if (time_s >= t1 && time_s < t2)
-            {
-
-                master.WriteSingleCoil(slaveId, 4, true);
-                btn_for.Text = "LIGADO";
-                btn_for.BackColor = Color.LightGreen;
-            }
-
-            if (time_s >= t2 && time_s < t3)
-            {
-                master.WriteSingleCoil(slaveId, 2, true);
-                btn_sol.Text = "LIGADO";
-                btn_sol.BackColor = Color.LightGreen;
-                master.WriteSingleRegister(slaveId, 25, Convert.ToUInt16(temp_l*10));
-
-                master.WriteSingleCoil(slaveId, 4, false);
-                btn_for.Text = "DESLIGADO";
-                btn_for.BackColor = Color.LightSalmon;
-            }
-
-            if (time_s >= t3 && time_s < t4)
-            {
-                master.WriteSingleCoil(slaveId, 2, false);
-                btn_sol.Text = "DESLIGADO";
-                btn_sol.BackColor = Color.LightSalmon;
-
-                master.WriteSingleCoil(slaveId, 4, true);
-                btn_for.Text = "LIGADO";
-                btn_for.BackColor = Color.LightGreen;
-            }
-
-            if (time_s >= t4)
-            {
-                master.WriteSingleCoil(slaveId, 2, false);
-                btn_sol.Text = "DESLIGADO";
-                btn_sol.BackColor = Color.LightSalmon;
-
-                master.WriteSingleCoil(slaveId, 4, false);
-                btn_for.Text = "DESLIGADO";
-                btn_for.BackColor = Color.LightSalmon;
-            }
-
-                // Crônometro--------------------------------------------------------------------------------------------------
+            IModbusSerialMaster master6 = ModbusSerialMaster.CreateRtu(ports);
+            // Crônometro--------------------------------------------------------------------------------------------------
 
 
-                if (time_s <= 59)
+            if (time_s <= 59)
             {
                 if (time_s < 10)
                 {
@@ -154,77 +116,144 @@ namespace Testeconnect
             }
             time_s++;
 
+            ushort[] holding_register = master6.ReadHoldingRegisters(1, 0, 2); // Cria a Variável e recebe o 2 registradores
 
-            //-------------------------------------------------------------------------------------------------------------
-
-            //Escrita/Leitura dos Registradores
-
-
-
-            ushort[] holding_register = master.ReadHoldingRegisters(slaveId, startAddress, 2);
-
-            float valor = Convert.ToSingle(holding_register[0]);
+            float valor = Convert.ToSingle(holding_register[0]); // Transforma em um float para ser manipulado
             float valor1 = Convert.ToSingle(holding_register[1]);
 
-            leitura.Text = Convert.ToString(valor1/10);
-            leitura2.Text = Convert.ToString(valor/10);
-
-                     
-            
-            // write single Coil
-
-            //master.WriteSingleCoil(slaveId, 4, funct1);
-
-            // write single Register
+            leitura.Text = Convert.ToString(valor1 / 10); // escreve o valor no 'box'
+            leitura2.Text = Convert.ToString(valor / 10);
 
 
             //-------------------------------------------------------------------------------------------------------------
 
+        }
 
-            //else
-            //{
-            // master.WriteSingleCoil(slaveId, 2, funct);
-            //}
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+
+            IModbusSerialMaster master = ModbusSerialMaster.CreateRtu(ports);
+            byte slaveId = Convert.ToByte(txtslave.Text);
+            ushort startAddress = Convert.ToUInt16(txtaddress.Text);
+
+            //master.WriteSingleRegister(slaveId, 47, Convert.ToUInt16(fun1));
 
 
+
+            if (contador < t1)
+            {
+                master.WriteSingleCoil(slaveId, 2, false);
+                btn_sol.Text = "DESLIGADO";
+
+                master.WriteSingleCoil(slaveId, 4, false);
+                btn_for.Text = "DESLIGADO";
+
+                master.WriteSingleRegister(slaveId, 25, Convert.ToUInt16(temp_h * 10));
+
+            }
+
+            if (contador >= t1 && contador < t2)
+            {
+
+                master.WriteSingleCoil(slaveId, 4, true);
+                btn_for.Text = "LIGADO";
+                btn_for.BackColor = Color.LightGreen;
+            }
+
+            if (contador >= t2 && contador < t3)
+            {
+                master.WriteSingleCoil(slaveId, 2, true);
+                btn_sol.Text = "LIGADO";
+                btn_sol.BackColor = Color.LightGreen;
+                master.WriteSingleRegister(slaveId, 25, Convert.ToUInt16(temp_l * 10));
+
+                master.WriteSingleCoil(slaveId, 4, false);
+                btn_for.Text = "DESLIGADO";
+                btn_for.BackColor = Color.LightSalmon;
+            }
+
+            if (contador >= t3 && contador < t4)
+            {
+                master.WriteSingleCoil(slaveId, 2, false);
+                btn_sol.Text = "DESLIGADO";
+                btn_sol.BackColor = Color.LightSalmon;
+
+                master.WriteSingleCoil(slaveId, 4, true);
+                btn_for.Text = "LIGADO";
+                btn_for.BackColor = Color.LightGreen;
+            }
+
+            if (contador >= t4)
+            {
+                master.WriteSingleCoil(slaveId, 2, false);
+                btn_sol.Text = "DESLIGADO";
+                btn_sol.BackColor = Color.LightSalmon;
+
+                master.WriteSingleCoil(slaveId, 4, false);
+                btn_for.Text = "DESLIGADO";
+                btn_for.BackColor = Color.LightSalmon;
+            }
+
+            //Escrita/Leitura dos Registradores
+            //temperatura e TEMP-SET
+            ushort[] holding_register = master.ReadHoldingRegisters(slaveId, startAddress, 2); // Cria a Variável e recebe o 2 registradores
+
+            float valor = Convert.ToSingle(holding_register[0]); // Transforma em um float para ser manipulado
+            float valor1 = Convert.ToSingle(holding_register[1]);
+
+            leitura.Text = Convert.ToString(valor1 / 10); // escreve o valor no 'box'
+            leitura2.Text = Convert.ToString(valor / 10);
+
+            contador++;
 
         }
+
 
         private void button1_Click(object sender, EventArgs e)
                    
       {
+            IModbusSerialMaster master5 = ModbusSerialMaster.CreateRtu(ports);
+
             try
             {
-                if (ports.IsOpen)
+                if (start == 1)
                 {
                     timer1.Enabled = false;
-                    ports.Close();
+                    //timer2.Enabled = false;
+
                     button1.Text = "Desconnected";
                     button1.BackColor = Color.Red;
 
-                                       
+                    //btn_for.Enabled = true;
+                    // btn_sol.Enabled = true;
+
+                    master5.WriteSingleRegister(1, 47, 0);
 
                     time_h = 0;
                     time_s = 0;
                     time_m = 0;
 
-                    txt_time.Text = Convert.ToString(time_h) + ":" + Convert.ToString(time_m) + ":" + Convert.ToString(time_s);
+                    txt_time.Text = Convert.ToString(time_h) + "0:0" + Convert.ToString(time_m) + ":0" + Convert.ToString(time_s);
 
-                    fun1 = 0;
-                   
+                    //fun1 = 0;
+                    //contador = 0;
 
-
-                }
+                    start = 0;
+                                                           }
                 else
                 {
+                    master5.WriteSingleRegister(1, 47, 1);
+
                     timer1.Enabled = true;
-                    ports.Open();
+                    //timer2.Enabled = true;
+                    //btn_for.Enabled = false;
+                    //btn_sol.Enabled = false;
                     button1.Text = "Connected";
                     button1.BackColor = Color.Green;
+                    //fun1 = 1;
 
-                    fun1 = 1;
-                    
-                                    }
+                    start = 1;
+                }
             }
             catch(Exception err)
             {
@@ -232,11 +261,7 @@ namespace Testeconnect
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            timer1.Enabled = false;
-            ports.Close();
-        }
+       
 
         private void comunicaçãoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -271,36 +296,102 @@ namespace Testeconnect
 
         private void btn_sol_Click(object sender, EventArgs e)
         {
-            if (funct == false)
+            IModbusSerialMaster master2 = ModbusSerialMaster.CreateRtu(ports);
+            
+
+            if (funct == 0)
             {
-                funct = true;
+                funct = 1;
                 btn_sol.Text = "LIGADO";
                 btn_sol.BackColor = Color.LightGreen;
+                master2.WriteSingleCoil(1, 2, true);
             }
-            else if (funct == true){
-                funct = false;
+            else if (funct == 1){
+                funct = 0;
                 btn_sol.Text = "DESLIGADO";
                 btn_sol.BackColor = Color.LightCoral;
+                master2.WriteSingleCoil(1, 2, false);
             }
                  
         }
 
         private void btn_for_Click(object sender, EventArgs e)
         {
-            if (funct1 == false)
+            IModbusSerialMaster master3 = ModbusSerialMaster.CreateRtu(ports);
+
+            if (funct1 == 0)
             {
-                funct1 = true;
+                funct1 = 1;
                 btn_for.Text = "LIGADO";
                 btn_for.BackColor = Color.LightGreen;
+                master3.WriteSingleCoil(1, 4, true);
             }
-            else if (funct1 == true)
+            else if (funct1 == 1)
             {
-                funct1 = false;
+                funct1 = 0;
                 btn_for.Text = "DESLIGADO";
                 btn_for.BackColor = Color.LightCoral;
+                master3.WriteSingleCoil(1, 4, false);
+
             }
         }
 
-       
+        private void btn_open_Click(object sender, EventArgs e)
+        {
+            if (ports.IsOpen)
+            {
+                ports.Close();
+                btn_open.Text = "FECHADO";
+            }
+            else
+            {
+                ports.Open();
+                btn_open.Text = "ABERTO";
+            }    
+        }
+
+        private void programaçãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form4 form4 = new Form4();
+            form4.ShowDialog();
+            IModbusSerialMaster master4 = ModbusSerialMaster.CreateRtu(ports);
+
+            tempo1 = Convert.ToInt16(form4.tempo1.Text);
+            tempo2 = Convert.ToInt16(form4.tempo2.Text);
+            tempo3 = Convert.ToInt16(form4.tempo3.Text);
+            tempo1v = Convert.ToInt16(form4.tempo1v.Text);
+            tempo2v = Convert.ToInt16(form4.tempo2v.Text);
+            tempo3v = Convert.ToInt16(form4.tempo3v.Text);
+
+            set1 = Convert.ToInt16(form4.set1.Text);
+            set2 = Convert.ToInt16(form4.set2.Text);
+            set3 = Convert.ToInt16(form4.set3.Text);
+            set1v = Convert.ToInt16(form4.set1v.Text);
+            set2v = Convert.ToInt16(form4.set2v.Text);
+            set3v = Convert.ToInt16(form4.set3v.Text);
+
+            box1 = Convert.ToInt16(form4.box1.Text);
+            box2 = Convert.ToInt16(form4.box2.Text);
+            box3 = Convert.ToInt16(form4.box3.Text);
+
+
+            master4.WriteSingleRegister(1, 73, Convert.ToUInt16(box1));
+            master4.WriteSingleRegister(1, 14, Convert.ToUInt16(box2));
+            master4.WriteSingleRegister(1, 95, Convert.ToUInt16(box3));
+
+            master4.WriteSingleRegister(1, 97, Convert.ToUInt16(tempo1v));
+            master4.WriteSingleRegister(1, 98, Convert.ToUInt16(tempo2v));
+            master4.WriteSingleRegister(1, 99, Convert.ToUInt16(tempo3v));
+
+            master4.WriteSingleRegister(1, 102, Convert.ToUInt16(set1v));
+            master4.WriteSingleRegister(1, 103, Convert.ToUInt16(set2v));
+            master4.WriteSingleRegister(1, 104, Convert.ToUInt16(set3v));
+
+        }
+
+        private void fecharToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

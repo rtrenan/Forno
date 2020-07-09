@@ -53,6 +53,10 @@
             this.btn_for = new System.Windows.Forms.Button();
             this.txt_time = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.btn_open = new System.Windows.Forms.Button();
+            this.programaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fecharToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -82,7 +86,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(249, 36);
+            this.button1.Location = new System.Drawing.Point(229, 36);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 6;
@@ -130,7 +134,9 @@
             // 
             this.comunicaçãoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.comunicaçãoToolStripMenuItem1,
-            this.rampaTemperaturaToolStripMenuItem});
+            this.rampaTemperaturaToolStripMenuItem,
+            this.programaçãoToolStripMenuItem,
+            this.fecharToolStripMenuItem});
             this.comunicaçãoToolStripMenuItem.Name = "comunicaçãoToolStripMenuItem";
             this.comunicaçãoToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
             this.comunicaçãoToolStripMenuItem.Text = "Configuração";
@@ -275,6 +281,35 @@
             this.label5.TabIndex = 22;
             this.label5.Text = "Tempo do Teste";
             // 
+            // timer2
+            // 
+            this.timer2.Interval = 1000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // btn_open
+            // 
+            this.btn_open.Location = new System.Drawing.Point(325, 36);
+            this.btn_open.Name = "btn_open";
+            this.btn_open.Size = new System.Drawing.Size(101, 23);
+            this.btn_open.TabIndex = 23;
+            this.btn_open.Text = "OPEN PORT";
+            this.btn_open.UseVisualStyleBackColor = true;
+            this.btn_open.Click += new System.EventHandler(this.btn_open_Click);
+            // 
+            // programaçãoToolStripMenuItem
+            // 
+            this.programaçãoToolStripMenuItem.Name = "programaçãoToolStripMenuItem";
+            this.programaçãoToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.programaçãoToolStripMenuItem.Text = "Programação";
+            this.programaçãoToolStripMenuItem.Click += new System.EventHandler(this.programaçãoToolStripMenuItem_Click);
+            // 
+            // fecharToolStripMenuItem
+            // 
+            this.fecharToolStripMenuItem.Name = "fecharToolStripMenuItem";
+            this.fecharToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.fecharToolStripMenuItem.Text = "Fechar";
+            this.fecharToolStripMenuItem.Click += new System.EventHandler(this.fecharToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -282,6 +317,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ClientSize = new System.Drawing.Size(452, 353);
+            this.Controls.Add(this.btn_open);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txt_time);
             this.Controls.Add(this.btn_for);
@@ -340,6 +376,10 @@
         public System.Windows.Forms.Button btn_for;
         private System.Windows.Forms.TextBox txt_time;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Button btn_open;
+        private System.Windows.Forms.ToolStripMenuItem programaçãoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fecharToolStripMenuItem;
     }
 }
 
