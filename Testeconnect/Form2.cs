@@ -30,5 +30,7 @@ namespace Testeconnect
             comboBox1.Items.Clear();
             comboBox1.Items.AddRange(ports);
         }
+
+      
     }
 }

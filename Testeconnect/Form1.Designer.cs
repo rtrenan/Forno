@@ -39,6 +39,8 @@
             this.comunicaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comunicaçãoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.rampaTemperaturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.programaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fecharToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.endereçosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtslave = new System.Windows.Forms.TextBox();
@@ -55,8 +57,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.btn_open = new System.Windows.Forms.Button();
-            this.programaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fecharToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -65,30 +65,34 @@
             // leitura
             // 
             this.leitura.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.leitura.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.leitura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.leitura.Location = new System.Drawing.Point(9, 151);
+            this.leitura.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.leitura.Cursor = System.Windows.Forms.Cursors.No;
+            this.leitura.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.leitura.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leitura.Location = new System.Drawing.Point(45, 151);
             this.leitura.Name = "leitura";
-            this.leitura.Size = new System.Drawing.Size(126, 23);
+            this.leitura.Size = new System.Drawing.Size(139, 45);
             this.leitura.TabIndex = 0;
             this.leitura.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // leitura2
             // 
             this.leitura2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.leitura2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.leitura2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.leitura2.Location = new System.Drawing.Point(9, 194);
+            this.leitura2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.leitura2.Cursor = System.Windows.Forms.Cursors.No;
+            this.leitura2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.leitura2.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leitura2.Location = new System.Drawing.Point(220, 151);
             this.leitura2.Name = "leitura2";
-            this.leitura2.Size = new System.Drawing.Size(126, 24);
+            this.leitura2.Size = new System.Drawing.Size(139, 45);
             this.leitura2.TabIndex = 1;
             this.leitura2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(229, 36);
+            this.button1.Location = new System.Drawing.Point(477, 58);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(312, 32);
             this.button1.TabIndex = 6;
             this.button1.Text = "START";
             this.button1.UseVisualStyleBackColor = true;
@@ -103,7 +107,7 @@
             // 
             this.temp1.AutoSize = true;
             this.temp1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.temp1.Location = new System.Drawing.Point(8, 125);
+            this.temp1.Location = new System.Drawing.Point(44, 125);
             this.temp1.Name = "temp1";
             this.temp1.Size = new System.Drawing.Size(111, 20);
             this.temp1.TabIndex = 9;
@@ -113,7 +117,7 @@
             // 
             this.temp2.AutoSize = true;
             this.temp2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.temp2.Location = new System.Drawing.Point(8, 174);
+            this.temp2.Location = new System.Drawing.Point(216, 125);
             this.temp2.Name = "temp2";
             this.temp2.Size = new System.Drawing.Size(103, 20);
             this.temp2.TabIndex = 10;
@@ -126,7 +130,7 @@
             this.ajudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(452, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(837, 24);
             this.menuStrip1.TabIndex = 12;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -155,6 +159,20 @@
             this.rampaTemperaturaToolStripMenuItem.Text = "Rampa - Temperatura";
             this.rampaTemperaturaToolStripMenuItem.Click += new System.EventHandler(this.rampaTemperaturaToolStripMenuItem_Click);
             // 
+            // programaçãoToolStripMenuItem
+            // 
+            this.programaçãoToolStripMenuItem.Name = "programaçãoToolStripMenuItem";
+            this.programaçãoToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.programaçãoToolStripMenuItem.Text = "Programação";
+            this.programaçãoToolStripMenuItem.Click += new System.EventHandler(this.programaçãoToolStripMenuItem_Click);
+            // 
+            // fecharToolStripMenuItem
+            // 
+            this.fecharToolStripMenuItem.Name = "fecharToolStripMenuItem";
+            this.fecharToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.fecharToolStripMenuItem.Text = "Fechar";
+            this.fecharToolStripMenuItem.Click += new System.EventHandler(this.fecharToolStripMenuItem_Click);
+            // 
             // ajudaToolStripMenuItem
             // 
             this.ajudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -171,35 +189,37 @@
             // 
             // txtslave
             // 
-            this.txtslave.Location = new System.Drawing.Point(259, 96);
+            this.txtslave.Location = new System.Drawing.Point(259, 70);
             this.txtslave.Name = "txtslave";
-            this.txtslave.Size = new System.Drawing.Size(65, 20);
+            this.txtslave.Size = new System.Drawing.Size(78, 20);
             this.txtslave.TabIndex = 13;
             this.txtslave.Text = "1";
             // 
             // txtaddress
             // 
-            this.txtaddress.Location = new System.Drawing.Point(349, 96);
+            this.txtaddress.Location = new System.Drawing.Point(349, 70);
             this.txtaddress.Name = "txtaddress";
-            this.txtaddress.Size = new System.Drawing.Size(65, 20);
+            this.txtaddress.Size = new System.Drawing.Size(78, 20);
             this.txtaddress.TabIndex = 14;
             this.txtaddress.Text = "0";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(256, 77);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(256, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.Size = new System.Drawing.Size(67, 16);
             this.label1.TabIndex = 15;
             this.label1.Text = "Slave ID";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(346, 77);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(346, 51);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.Size = new System.Drawing.Size(102, 16);
             this.label2.TabIndex = 16;
             this.label2.Text = "Start Address";
             // 
@@ -207,7 +227,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 239);
+            this.label3.Location = new System.Drawing.Point(9, 230);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 20);
             this.label3.TabIndex = 17;
@@ -216,18 +236,18 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Testeconnect.Properties.Resources._9064;
-            this.pictureBox2.Location = new System.Drawing.Point(189, 125);
+            this.pictureBox2.Location = new System.Drawing.Point(527, 125);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(225, 190);
+            this.pictureBox2.Size = new System.Drawing.Size(232, 182);
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Testeconnect.Properties.Resources.imagemT2;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 36);
+            this.pictureBox1.Location = new System.Drawing.Point(10, 27);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 63);
+            this.pictureBox1.Size = new System.Drawing.Size(213, 63);
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
@@ -235,7 +255,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 287);
+            this.label4.Location = new System.Drawing.Point(9, 278);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 20);
             this.label4.TabIndex = 18;
@@ -245,9 +265,9 @@
             // 
             this.btn_sol.BackColor = System.Drawing.SystemColors.Control;
             this.btn_sol.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btn_sol.Location = new System.Drawing.Point(10, 260);
+            this.btn_sol.Location = new System.Drawing.Point(13, 251);
             this.btn_sol.Name = "btn_sol";
-            this.btn_sol.Size = new System.Drawing.Size(122, 27);
+            this.btn_sol.Size = new System.Drawing.Size(135, 27);
             this.btn_sol.TabIndex = 19;
             this.btn_sol.Text = "DESLIGADO";
             this.btn_sol.UseVisualStyleBackColor = false;
@@ -257,9 +277,9 @@
             // 
             this.btn_for.BackColor = System.Drawing.SystemColors.Control;
             this.btn_for.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btn_for.Location = new System.Drawing.Point(10, 307);
+            this.btn_for.Location = new System.Drawing.Point(13, 298);
             this.btn_for.Name = "btn_for";
-            this.btn_for.Size = new System.Drawing.Size(122, 27);
+            this.btn_for.Size = new System.Drawing.Size(135, 27);
             this.btn_for.TabIndex = 20;
             this.btn_for.Text = "DESLIGADO";
             this.btn_for.UseVisualStyleBackColor = false;
@@ -267,17 +287,19 @@
             // 
             // txt_time
             // 
-            this.txt_time.Location = new System.Drawing.Point(294, 321);
+            this.txt_time.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_time.Location = new System.Drawing.Point(317, 293);
             this.txt_time.Name = "txt_time";
-            this.txt_time.Size = new System.Drawing.Size(86, 20);
+            this.txt_time.Size = new System.Drawing.Size(144, 31);
             this.txt_time.TabIndex = 21;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(195, 324);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(184, 303);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 13);
+            this.label5.Size = new System.Drawing.Size(123, 16);
             this.label5.TabIndex = 22;
             this.label5.Text = "Tempo do Teste";
             // 
@@ -288,27 +310,13 @@
             // 
             // btn_open
             // 
-            this.btn_open.Location = new System.Drawing.Point(325, 36);
+            this.btn_open.Location = new System.Drawing.Point(477, 27);
             this.btn_open.Name = "btn_open";
-            this.btn_open.Size = new System.Drawing.Size(101, 23);
+            this.btn_open.Size = new System.Drawing.Size(114, 23);
             this.btn_open.TabIndex = 23;
             this.btn_open.Text = "OPEN PORT";
             this.btn_open.UseVisualStyleBackColor = true;
             this.btn_open.Click += new System.EventHandler(this.btn_open_Click);
-            // 
-            // programaçãoToolStripMenuItem
-            // 
-            this.programaçãoToolStripMenuItem.Name = "programaçãoToolStripMenuItem";
-            this.programaçãoToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.programaçãoToolStripMenuItem.Text = "Programação";
-            this.programaçãoToolStripMenuItem.Click += new System.EventHandler(this.programaçãoToolStripMenuItem_Click);
-            // 
-            // fecharToolStripMenuItem
-            // 
-            this.fecharToolStripMenuItem.Name = "fecharToolStripMenuItem";
-            this.fecharToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.fecharToolStripMenuItem.Text = "Fechar";
-            this.fecharToolStripMenuItem.Click += new System.EventHandler(this.fecharToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -316,7 +324,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.ClientSize = new System.Drawing.Size(452, 353);
+            this.ClientSize = new System.Drawing.Size(837, 354);
             this.Controls.Add(this.btn_open);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txt_time);

@@ -61,11 +61,10 @@
             this.groupBox1.Size = new System.Drawing.Size(596, 120);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(252, 85);
+            this.button1.Location = new System.Drawing.Point(241, 85);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(88, 26);
             this.button1.TabIndex = 10;
@@ -177,7 +176,6 @@
             this.comboBox2.Size = new System.Drawing.Size(100, 21);
             this.comboBox2.TabIndex = 1;
             this.comboBox2.Text = "9600";
-            
             // 
             // comboBox1
             // 
