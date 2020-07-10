@@ -24,8 +24,19 @@ namespace Testeconnect
             Close();
         }
 
-      
+        private void button2_Click(object sender, EventArgs e)
+        {
+            tempo1v.Clear();
+            tempo2v.Clear();
+            tempo3v.Clear();
+            tempo4v.Clear();
+            tempo5v.Clear();
 
-     
+            setv1.Clear();
+            setv2.Clear();
+            setv3.Clear();
+            setv4.Clear();
+            setv5.Clear();
+        }
     }
 }

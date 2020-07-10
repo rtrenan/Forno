@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.leitura = new System.Windows.Forms.Label();
-            this.leitura2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.temp1 = new System.Windows.Forms.Label();
@@ -57,6 +56,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.btn_open = new System.Windows.Forms.Button();
+            this.leitura2 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -74,19 +74,6 @@
             this.leitura.Size = new System.Drawing.Size(139, 45);
             this.leitura.TabIndex = 0;
             this.leitura.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // leitura2
-            // 
-            this.leitura2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.leitura2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.leitura2.Cursor = System.Windows.Forms.Cursors.No;
-            this.leitura2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.leitura2.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.leitura2.Location = new System.Drawing.Point(220, 151);
-            this.leitura2.Name = "leitura2";
-            this.leitura2.Size = new System.Drawing.Size(139, 45);
-            this.leitura2.TabIndex = 1;
-            this.leitura2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button1
             // 
@@ -318,6 +305,19 @@
             this.btn_open.UseVisualStyleBackColor = true;
             this.btn_open.Click += new System.EventHandler(this.btn_open_Click);
             // 
+            // leitura2
+            // 
+            this.leitura2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.leitura2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.leitura2.Cursor = System.Windows.Forms.Cursors.No;
+            this.leitura2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.leitura2.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leitura2.Location = new System.Drawing.Point(220, 151);
+            this.leitura2.Name = "leitura2";
+            this.leitura2.Size = new System.Drawing.Size(139, 45);
+            this.leitura2.TabIndex = 24;
+            this.leitura2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -325,6 +325,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ClientSize = new System.Drawing.Size(837, 354);
+            this.Controls.Add(this.leitura2);
             this.Controls.Add(this.btn_open);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txt_time);
@@ -341,7 +342,6 @@
             this.Controls.Add(this.temp1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.leitura2);
             this.Controls.Add(this.leitura);
             this.Controls.Add(this.menuStrip1);
             this.MaximizeBox = false;
@@ -361,7 +361,6 @@
         #endregion
 
         private System.Windows.Forms.Label leitura;
-        private System.Windows.Forms.Label leitura2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -388,6 +387,7 @@
         private System.Windows.Forms.Button btn_open;
         private System.Windows.Forms.ToolStripMenuItem programaçãoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fecharToolStripMenuItem;
+        private System.Windows.Forms.Label leitura2;
     }
 }
 

@@ -36,19 +36,18 @@ namespace Testeconnect
         int temp_l = 0;
         double contador = 0;
 
-        int tempo1 = 0;
-        int tempo2 = 0;
-        int tempo3 = 0;
+        
         int tempo1v = 0;
         int tempo2v = 0;
         int tempo3v = 0;
+        int tempo4v = 0;
+        int tempo5v = 0;
 
-        int set1 = 0;
-        int set2 = 0;
-        int set3 = 0;
         int set1v = 0;
         int set2v = 0;
         int set3v = 0;
+        int set4v = 0;
+        int set5v = 0;
 
         int box1 = 0;
         int box2 = 0;
@@ -78,11 +77,11 @@ namespace Testeconnect
             {
                 if (time_s < 10)
                 {
-                    txt_time.Text = Convert.ToString(time_h) + "0:0" + Convert.ToString(time_m) + ":0" + Convert.ToString(time_s) + " °C";
+                    txt_time.Text = Convert.ToString(time_h) + "0:0" + Convert.ToString(time_m) + ":0" + Convert.ToString(time_s);
                 }
                 else
                 {
-                    txt_time.Text = Convert.ToString(time_h) + "0:0" + Convert.ToString(time_m) + ":" + Convert.ToString(time_s) + " °C";
+                    txt_time.Text = Convert.ToString(time_h) + "0:0" + Convert.ToString(time_m) + ":" + Convert.ToString(time_s);
                 }
                 
             }
@@ -93,11 +92,11 @@ namespace Testeconnect
                 time_s = 0;
                 if (time_m < 10)
                 {
-                    txt_time.Text = Convert.ToString(time_h) + "0:0" + Convert.ToString(time_m) + ":0" + Convert.ToString(time_s) + " °C";
+                    txt_time.Text = Convert.ToString(time_h) + "0:0" + Convert.ToString(time_m) + ":0" + Convert.ToString(time_s) ;
                 }
                 else
                 {
-                    txt_time.Text = Convert.ToString(time_h) + "0:" + Convert.ToString(time_m) + ":" + Convert.ToString(time_s) + " °C";
+                    txt_time.Text = Convert.ToString(time_h) + "0:" + Convert.ToString(time_m) + ":" + Convert.ToString(time_s) ;
                 }
             }
             else if (time_h < 999)
@@ -107,11 +106,11 @@ namespace Testeconnect
                 time_m = 0;
                 if (time_h < 10)
                 {
-                    txt_time.Text = "0" + Convert.ToString(time_h) + ":0" + Convert.ToString(time_m) + ":0" + Convert.ToString(time_s) + " °C";
+                    txt_time.Text = "0" + Convert.ToString(time_h) + ":0" + Convert.ToString(time_m) + ":0" + Convert.ToString(time_s) ;
                 }
                 else
                 {
-                    txt_time.Text = Convert.ToString(time_h) + ":" + Convert.ToString(time_m) + ":" + Convert.ToString(time_s) + " °C";
+                    txt_time.Text = Convert.ToString(time_h) + ":" + Convert.ToString(time_m) + ":" + Convert.ToString(time_s) ;
                 }
             }
             time_s++;
@@ -124,8 +123,8 @@ namespace Testeconnect
                 float valor = Convert.ToSingle(holding_register[0]); // Transforma em um float para ser manipulado
                 float valor1 = Convert.ToSingle(holding_register[1]);
 
-                leitura.Text = Convert.ToString(valor1 / 10); // escreve o valor no 'box'
-                leitura2.Text = Convert.ToString(valor / 10);
+                leitura.Text = Convert.ToString(valor1 / 10) + " °C"; // escreve o valor no 'box'
+                leitura2.Text = Convert.ToString(valor / 10) + " °C";
 
                 //Escrita dos Registradores de Configuração
 
@@ -138,13 +137,17 @@ namespace Testeconnect
                 master6.WriteSingleRegister(1, 96, Convert.ToUInt16(tempo1v));
                 master6.WriteSingleRegister(1, 97, Convert.ToUInt16(tempo2v));
                 master6.WriteSingleRegister(1, 98, Convert.ToUInt16(tempo3v));
+                master6.WriteSingleRegister(1, 99, Convert.ToUInt16(tempo4v));
+                master6.WriteSingleRegister(1, 100, Convert.ToUInt16(tempo5v));
 
-                master6.WriteSingleRegister(1, 101, Convert.ToUInt16(set1v*10));
-                master6.WriteSingleRegister(1, 102, Convert.ToUInt16(set2v*10));
-                master6.WriteSingleRegister(1, 103, Convert.ToUInt16(set3v*10));          
-                
-                                
-                
+                master6.WriteSingleRegister(1, 101, Convert.ToUInt16(set1v * 10));
+                master6.WriteSingleRegister(1, 102, Convert.ToUInt16(set2v * 10));
+                master6.WriteSingleRegister(1, 103, Convert.ToUInt16(set3v * 10));
+                master6.WriteSingleRegister(1, 104, Convert.ToUInt16(set4v * 10));
+                master6.WriteSingleRegister(1, 105, Convert.ToUInt16(set5v * 10));
+
+
+
             }
             catch (Exception err)
             {
@@ -265,7 +268,7 @@ namespace Testeconnect
                     time_s = 0;
                     time_m = 0;
 
-                    txt_time.Text = Convert.ToString(time_h) + "0:0" + Convert.ToString(time_m) + ":0" + Convert.ToString(time_s) + " °C";
+                    txt_time.Text = Convert.ToString(time_h) + "0:0" + Convert.ToString(time_m) + ":0" + Convert.ToString(time_s) ;
 
                     //fun1 = 0;
                     //contador = 0;
@@ -376,18 +379,25 @@ namespace Testeconnect
 
         private void btn_open_Click(object sender, EventArgs e)
         {
-            if (ports.IsOpen)
+            try
             {
-                ports.Close();
-                btn_open.Text = "FECHADO";
-                btn_open.BackColor = Color.Red;
+                if (ports.IsOpen)
+                {
+                    ports.Close();
+                    btn_open.Text = "FECHADO";
+                    btn_open.BackColor = Color.Red;
+                }
+                else
+                {
+                    ports.Open();
+                    btn_open.Text = "ABERTO";
+                    btn_open.BackColor = Color.Green;
+                }
             }
-            else
+            catch (Exception err)
             {
-                ports.Open();
-                btn_open.Text = "ABERTO";
-                btn_open.BackColor = Color.Green;
-            }    
+                MessageBox.Show("Erro de Porta!");
+            }
         }
 
         private void programaçãoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -395,38 +405,45 @@ namespace Testeconnect
             Form4 form4 = new Form4();
             form4.ShowDialog();
             IModbusSerialMaster master4 = ModbusSerialMaster.CreateRtu(ports);
+            try
+            {
 
-            tempo1 = Convert.ToInt16(form4.tempo1.Text);
-            tempo2 = Convert.ToInt16(form4.tempo2.Text);
-            tempo3 = Convert.ToInt16(form4.tempo3.Text);
-            tempo1v = Convert.ToInt16(form4.tempo1v.Text);
-            tempo2v = Convert.ToInt16(form4.tempo2v.Text);
-            tempo3v = Convert.ToInt16(form4.tempo3v.Text);
+                tempo1v = Convert.ToInt16(form4.tempo1v.Text);
+                tempo2v = Convert.ToInt16(form4.tempo2v.Text);
+                tempo3v = Convert.ToInt16(form4.tempo3v.Text);
+                tempo3v = Convert.ToInt16(form4.tempo3v.Text);
+                tempo3v = Convert.ToInt16(form4.tempo3v.Text);
 
-            set1 = Convert.ToInt16(form4.set1.Text);
-            set2 = Convert.ToInt16(form4.set2.Text);
-            set3 = Convert.ToInt16(form4.set3.Text);
-            set1v = Convert.ToInt16(form4.set1v.Text);
-            set2v = Convert.ToInt16(form4.set2v.Text);
-            set3v = Convert.ToInt16(form4.set3v.Text);
 
-            box1 = Convert.ToInt16(form4.box1.Text);
-            box2 = Convert.ToInt16(form4.box2.Text);
-            //box3 = Convert.ToInt16(form4.box3.Text);
+                set1v = Convert.ToInt16(form4.setv1.Text);
+                set2v = Convert.ToInt16(form4.setv2.Text);
+                set3v = Convert.ToInt16(form4.setv3.Text);
+                set3v = Convert.ToInt16(form4.setv3.Text);
+                set3v = Convert.ToInt16(form4.setv3.Text);
 
-            /*
-            master4.WriteSingleRegister(1, 72, Convert.ToUInt16(box1));
-            master4.WriteSingleRegister(1, 13, Convert.ToUInt16(box2));
-            master4.WriteSingleRegister(1, 96, Convert.ToUInt16(box3));
+                box1 = Convert.ToInt16(form4.box1.Text);
+                box2 = Convert.ToInt16(form4.box2.Text);
+                //box3 = Convert.ToInt16(form4.box3.Text);
 
-            master4.WriteSingleRegister(1, 98, Convert.ToUInt16(tempo1v));
-            master4.WriteSingleRegister(1, 99, Convert.ToUInt16(tempo2v));
-            master4.WriteSingleRegister(1, 100, Convert.ToUInt16(tempo3v));
+                /*
+                master4.WriteSingleRegister(1, 72, Convert.ToUInt16(box1));
+                master4.WriteSingleRegister(1, 13, Convert.ToUInt16(box2));
+                master4.WriteSingleRegister(1, 96, Convert.ToUInt16(box3));
 
-            master4.WriteSingleRegister(1, 103, Convert.ToUInt16(set1v));
-            master4.WriteSingleRegister(1, 104, Convert.ToUInt16(set2v));
-            master4.WriteSingleRegister(1, 105, Convert.ToUInt16(set3v));
-            */
+                master4.WriteSingleRegister(1, 98, Convert.ToUInt16(tempo1v));
+                master4.WriteSingleRegister(1, 99, Convert.ToUInt16(tempo2v));
+                master4.WriteSingleRegister(1, 100, Convert.ToUInt16(tempo3v));
+
+                master4.WriteSingleRegister(1, 103, Convert.ToUInt16(set1v));
+                master4.WriteSingleRegister(1, 104, Convert.ToUInt16(set2v));
+                master4.WriteSingleRegister(1, 105, Convert.ToUInt16(set3v));
+                */
+
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Carregue valores!");
+            }
         }
 
         private void fecharToolStripMenuItem_Click(object sender, EventArgs e)
